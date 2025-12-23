@@ -288,3 +288,40 @@ body{
 [dir="rtl"] .testHeader{flex-direction:row-reverse}
 [dir="rtl"] .brand{flex-direction:row-reverse}
 [dir="rtl"] .actions{flex-direction:row-reverse}
+/* 🔹 Forcer le texte principal en blanc */
+body,
+.qText,
+.testTitle,
+.testDesc,
+.choice,
+.timerValue,
+.scoreValue,
+.bigNum,
+.barName,
+.barVal {
+  color: #ffffff;
+}
+
+/* 🔹 Texte secondaire légèrement blanc cassé */
+.qSub,
+.muted,
+.timerLabel,
+.scoreLabel {
+  color: #e6e6e6;
+}
+
+/* 🔹 Boutons réponses */
+.choice {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* 🔹 Bouton Passer */
+.btn.ghost {
+  color: #ffffff;
+}
+
+/* 🔹 Indice / hint */
+.hint {
+  color: #dddddd;
+}
