@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IQ Mix — Test complet (FR/AR)</title>
+  <meta name="theme-color" content="#070a14" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="bg"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">IQ</div>
+      <div class="brandText">
+        <div class="title" data-i18n="app_title">IQ Mix</div>
+        <div class="subtitle" data-i18n="app_subtitle">Test complet (indicatif)</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="langBtn" class="chip" aria-label="Language">FR</button>
+      <button id="soundBtn" class="chip" aria-label="Sound">🔊</button>
+      <button id="resetBtn" class="chip" data-i18n="reset">Réinitialiser</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="screenHome" class="card screen active" role="region" aria-label="Home">
+      <div class="hero">
+        <div class="heroLeft">
+          <h1 data-i18n="home_h1">Test de QI complet — adultes</h1>
+          <p class="muted" data-i18n="home_p">
+            6 épreuves (logique, spatial, mémoire, calcul, verbal, attention). Durée 12–15 min.
+          </p>
+          <div class="kpis">
+            <div class="kpi">
+              <div class="kpiNum">6</div>
+              <div class="kpiLbl" data-i18n="home_kpi1">épreuves</div>
+            </div>
+            <div class="kpi">
+              <div class="kpiNum">~15</div>
+              <div class="kpiLbl" data-i18n="home_kpi2">minutes</div>
+            </div>
+            <div class="kpi">
+              <div class="kpiNum">FR/AR</div>
+              <div class="kpiLbl" data-i18n="home_kpi3">bilingue</div>
+            </div>
+          </div>
+
+          <div class="notice">
+            <span class="pill">⚠️</span>
+            <div>
+              <div class="noticeTitle" data-i18n="home_notice_title">Important</div>
+              <div class="noticeText" data-i18n="home_notice_text">
+                Indicateur ludique, pas un test médical. Résultats = estimation.
+              </div>
+            </div>
+          </div>
+
+          <div class="ctaRow">
+            <button id="startBtn" class="btn primary" data-i18n="start">Commencer</button>
+            <button id="howBtn" class="btn" data-i18n="how">Comment ça marche</button>
+          </div>
+        </div>
+
+        <div class="heroRight">
+          <div class="orb">
+            <div class="orbRing"></div>
+            <div class="orbCore"></div>
+            <div class="orbGlow"></div>
+          </div>
+          <div class="heroCard">
+            <div class="heroCardTitle" data-i18n="modules_title">Modules</div>
+            <ul class="moduleList" id="moduleList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenHow" class="card screen" role="region" aria-label="How">
+      <h2 data-i18n="how_h2">Comment ça marche</h2>
+      <ol class="steps">
+        <li data-i18n="how_s1">Chaque épreuve est chronométrée.</li>
+        <li data-i18n="how_s2">Tu réponds, on calcule score + précision + vitesse.</li>
+        <li data-i18n="how_s3">À la fin : scores par domaine et indice global (estimé).</li>
+      </ol>
+      <div class="ctaRow">
+        <button class="btn" id="backHomeBtn" data-i18n="back">Retour</button>
+        <button class="btn primary" id="goStartBtn" data-i18n="start">Commencer</button>
+      </div>
+    </section>
+
+    <section id="screenTest" class="card screen" role="region" aria-label="Test">
+      <div class="testHeader">
+        <div class="testMeta">
+          <div class="testTitle" id="testTitle">—</div>
+          <div class="testDesc muted" id="testDesc">—</div>
+        </div>
+        <div class="testRight">
+          <div class="timer">
+            <div class="timerLabel" data-i18n="time">Temps</div>
+            <div class="timerValue" id="timerValue">00:00</div>
+          </div>
+          <div class="scoreBox">
+            <div class="scoreLabel" data-i18n="score">Score</div>
+            <div class="scoreValue" id="scoreValue">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress">
+        <div class="progressBar" id="progressBar"></div>
+      </div>
+
+      <div id="questionArea" class="qArea">
+        <!-- injected -->
+      </div>
+
+      <div class="navRow">
+        <button id="skipBtn" class="btn ghost" data-i18n="skip">Passer</button>
+        <button id="nextBtn" class="btn primary" data-i18n="next">Suivant</button>
+      </div>
+      <div class="hint muted" id="hintLine"></div>
+    </section>
+
+    <section id="screenResults" class="card screen" role="region" aria-label="Results">
+      <div class="resultsTop">
+        <h2 data-i18n="results_h2">Résultats</h2>
+        <button class="btn" id="shareBtn" data-i18n="copy">Copier</button>
+      </div>
+
+      <div class="resultMain">
+        <div class="bigScore">
+          <div class="bigLabel" data-i18n="estimated_index">Indice estimé</div>
+          <div class="bigNum" id="iqEstimate">—</div>
+          <div class="bigSub muted" id="iqLabel">—</div>
+        </div>
+
+        <div class="bars" id="domainBars"></div>
+      </div>
+
+      <div class="disclaimer muted" data-i18n="results_disclaimer">
+        Indice indicatif. Pour un test officiel, consulte un professionnel qualifié.
+      </div>
+
+      <div class="ctaRow">
+        <button class="btn" id="againBtn" data-i18n="again">Rejouer</button>
+        <a class="btn primary" href="https://github.com/" target="_blank" rel="noreferrer" data-i18n="github_hint">Publier sur GitHub Pages</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot muted">
+    <span>©</span> <span id="year"></span> <span>—</span>
+    <span data-i18n="footer">Test IQ Mix (FR/AR) · offline · sans tracking</span>
+  </footer>
+
+  <script src="assets/i18n.js"></script>
+  <script src="assets/questions.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
